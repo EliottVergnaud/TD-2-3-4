@@ -1,0 +1,258 @@
+dates = ["1st January", "2nd January", "3rd January"]
+stock_prices = [150, 152, 151]
+for date, price in zip(dates, stock_prices):
+    print(f"{date} : ${price}")
+
+
+dates = ["4th January", "5th January", "6th January"]
+stock_prices = [155, 156, 153]
+
+def calculate_average(prices):
+    return sum(prices) / len(prices)
+average_price = calculate_average(stock_prices)
+print(f"Average Stock Price: ${average_price}")
+
+dates = ["4th January", "5th January", "6th January"]
+stock_prices = [155, 156, 153]
+
+def day_with_highest_price(dates, stock_prices) :
+    day_highest_price = dates[0]
+    highest_price = stock_prices[0]
+    for dates, price in zip(date,stock_prices) :
+        if price > highest_price :
+            highest_price = price 
+            day_highest_price = date
+    return day_highest_price
+
+day_highest_price = day_with_highest_price (dates, stock_prices)
+print("day_highest_price")
+
+def find_highest_stock_price_day(dates, stock_prices):
+    if not dates or not stock_prices:
+        return None  # Return None if the lists are empty or have different lengths
+
+    max_price = stock_prices[0]
+    max_day = dates[0]
+
+    for date, price in zip(dates, stock_prices):
+        if price > max_price:
+            max_price = price
+            max_day = date
+
+    return max_day
+
+
+dates = ["4th January", "5th January", "6th January"]
+stock_prices = [155, 156, 153]
+
+highest_day = find_highest_stock_price_day(dates, stock_prices)
+print(f"The day with the highest stock price is: {highest_day}")
+
+
+def present_value(fv, r, n):
+    return fv / (1 + r)**n
+def future_value(pv, r, n):
+    return pv * (1 + r)**n
+def compound(pv, r):
+    return pv * (1 + r)
+def discount(fv, r):
+    return fv / (1 + r)
+
+def present_value(fv, r, n):
+    return fv / (1 + r)**n
+PV = present_value(500, 6/100, 2)
+print (PV)
+
+# ${PV:.2f} tells pyhton to format PV as floating with 2 decimals
+
+
+def present_value(fv, r, n):
+    return fv / (1 + r)**n
+PV = present_value(1000, 4/100, 5)
+print (f"the present value is : ${PV:.2f}")
+
+
+def future_value(pv, r, n):
+    return pv * (1 + r)**n
+
+FV_1 = future_value(200,3/100,2)
+FV_2 = future_value(150,5/100,3)
+
+print(f"the future value 1 is : ${FV_1:.2f}")
+print(f"the future value 2 is : ${FV_2:.2f}")
+
+def present_value(fv, r, n):
+    return fv / (1 + r)**n
+PV_1 = present_value(115, 8/100, 1)
+PV_2 = present_value(180, 0.1, 2)
+PV_3 = present_value(500, 0.06, 2)
+PV_4 = present_value(1000, 0.07, 3)
+
+
+print(f"the present value 1 is : ${PV_1:.2f}")
+print(f"the present value 2 is : ${PV_2:.2f}")
+print(f"the present value 2 is : ${PV_3:.2f}")
+print(f"the present value 2 is : ${PV_4:.2f}")
+
+!pip install pandas yfinance
+import yfinance as yf
+
+apple_data = yf.download("AAPL", start="2020-01-01", end="2023-01-01")
+print(apple_data.head())
+
+
+
+import matplotlib.pyplot as plt
+apple_data["Close"].plot(figsize=(10, 5))
+plt.title("Apple Stock Closing Prices")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+apple_data["50-day MA"] = apple_data["Close"].rolling(window=50).mean()
+apple_data[["Close", "50-day MA"]].plot(figsize=(10, 5))
+plt.title("Apple Stock Prices with 50-day Moving Average")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+weekly_data = apple_data["Close"].resample("W").mean()
+weekly_data.plot(figsize=(10, 5))
+plt.title("Apple Stock Weekly Closing Prices")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+monthly_data = apple_data["Close"].resample("M").mean()
+monthly_data.plot(figsize=(10, 5))
+plt.title("Apple Stock Monthly Closing Prices")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+microsoft_data = yf.download("MSFT", start="2020-01-01", end="2020-12-31")
+print(microsoft_data.head())
+
+google_data = yf.download("GOOGL", start="2020-01-01", end="2022-12-31")
+print(google_data.head())
+
+amazon_data = yf.download("AMZN", start="2021-10-01", end="2021-12-31")
+print(google_data.head())
+
+tesla_data = yf.download("TSLA", start="2020-01-01", end="2021-01-01")
+tesla_data["Close"].plot(figsize=(10, 5))
+plt.title("Tesla Stock Closing Prices 2020")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+netflix_data=yf.download("NFLX", start="2018-01-01", end="2018-06-31")
+netflix_data["Close"].plot(figsize=(10,5))
+plt.title("Netflix Stock Closing Prices First Half of 2022")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+
+
+facebook_data = yf.download("META", start="2019-01-01", end="2019-12-31")
+facebook_data["Close"].plot(figsize=(10, 5))
+plt.title("Facebook Stock Closing Prices 2019")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+facebook_data = yf.download("META", start="2019-01-01", end="2019-12-31")
+print(facebook_data.head())
+
+ibm_data = yf.download("IBM", start="2020-01-01", end="2021-01-01")
+ibm_data["30-day MA"] = ibm_data["Close"].rolling(window=30).mean()
+ibm_data[["Close", "30-day MA"]].plot(figsize=(10, 5))
+plt.title("IBM Stock Prices with 30-day Moving Average 2020")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+adobe_data = yf.download("ADBE", start="2021-01-01", end="2022-01-01")
+adobe_data["20-day MA"] = adobe_data["Close"].rolling(window=20).mean()
+adobe_data[["Close", "20-day MA"]].plot(figsize=(10, 5))
+plt.title("Adobe Stock Prices with 20-day Moving Average 2020")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+nvidia_data = yf.download("NVDA", start="2022-01-01", end="2023-01-01")
+nvidia_data["40-day MA"] = adobe_data["Close"].rolling(window=40).mean()
+nvidia_data[["Close", "40-day MA"]].plot(figsize=(10, 5))
+plt.title("NVIDIA Stock Prices with 40-day Moving Average 2022")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+sbux_data = yf.download("SBUX", start="2020-01-01", end="2021-01-01")
+monthly_data = sbux_data["Close"].resample("M").mean()
+monthly_data.plot(figsize=(10, 5))
+plt.title("Starbucks Monthly Average Closing Prices 2020")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+disney_data = yf.download("DIS", start="2019-01-01", end="2020-01-01")
+beweekly_data = disney_data["Close"].resample("2W").mean()
+beweekly_data.plot(figsize=(10, 5))
+plt.title("Disney Beweekly Average Closing Prices 2019")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+cocacola_data = yf.download("KO", start="2020-01-01", end="2021-01-01")
+cocacola_data = cocacola_data["Close"].resample("Q").mean()
+beweekly_data.plot(figsize=(10, 5))
+plt.title("Cocacola Average Quarterly Closing Prices 2020")
+plt.ylabel("Price (in \$)")
+plt.xlabel("Date")
+plt.show()
+
+def calculate_average_and_highlight(data):
+    # Calculate the average stock price
+    average_price = sum(data) / len(data)
+    
+    # Create a list to store whether each day's stock price is above average
+    above_average = [price > average_price for price in data]
+
+    # Print the average stock price
+    print(f"Average Stock Price: {average_price:.2f}")
+    
+    # Print the days and highlight when the stock price is above average
+    for day, price, is_above_avg in zip(dates, data, above_average):
+        if is_above_avg:
+            print(f"{day}: ${price:.2f} (Above Average)")
+        else:
+            print(f"{day}: ${price:.2f}")
+
+# Sample data
+dates = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+stock_prices = [150, 152, 151, 153, 152]
+
+# Call the function with the sample data
+calculate_average_and_highlight(stock_prices)
+
+
+def forecast_next_day_price(stock_prices):
+    if len(stock_prices) < 2:
+        return "Insufficient data to make a forecast"
+    daily_changes = [stock_prices[i] - stock_prices[i - 1] for i in range(1, len(stock_prices))]
+    average_change = sum(daily_changes) / len(daily_changes)
+    last_known_price = stock_prices[-1]
+    forecasted_price = last_known_price + average_change
+    return forecasted_price
+
+
+historical_prices = [150, 152, 151, 153, 156]
+forecast = forecast_next_day_price(historical_prices)
+#if isinstance(forecast, str):
+ #   print(forecast)
+#else:
+print(f"Forecasted next day's price: {forecast:.2f}")
+
+

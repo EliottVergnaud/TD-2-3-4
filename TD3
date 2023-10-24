@@ -1,0 +1,224 @@
+class stock :
+    
+    def __init__(self, stock_name, current_price, dividend):
+        self.stock_name=stock_name
+        self.current_price = current_price
+        self.dividend = dividend
+    
+    def yield_dividend (self):
+        return  self.dividend/self.current_price
+stock_1 = stock("APPL", 177.49, 5)
+yield_stock_1 = stock_1.yield_dividend()
+print(yield_stock_1)
+
+
+class Portfolio:
+    
+    def __init__(self):
+        self.instruments = []
+        
+    def add_instrument(self, new_instrument):
+        self.instruments.append(new_instrument)
+    
+   
+        
+  
+   
+my_portfolio = Portfolio()
+my_portfolio.add_instrument("APPL")
+print(my_portfolio.instruments)
+
+
+
+
+import numpy as np
+prices = np.array([100, 102, 104, 101, 99, 98])
+returns = (prices[:1] - prices[-1:]) / prices[-1:]
+print("Daily returns:", returns)
+annual_volatility = np.std(returns) * np.sqrt(252)  
+print("Annualized volatility:", annual_volatility)
+
+import numpy as np
+np.random.seed(0) 
+daily_returns = np.random.normal(0.001, 0.02, 1000) 
+stock_prices = [100]
+for r in daily_returns : 
+    stock_prices.append(stock_prices[-1] * (1 + r)) 
+print(stock_prices[-1])
+
+
+
+
+import pandas as pd 
+portfolio_returns= {"asset_1":[0.04, 0.01, 0.05], "asset_2":[0.08,0.02,0.06]}
+df=pd.DataFrame(portfolio_returns)
+correlation = df.corr()
+print(correlation)
+weight_asset_1=0.4
+weight_asset_2=0.6
+portfolio_var=(weight_asset_1**2)*(0.1**2)+(weight_asset_2**2)*(0.2**2)+2*weight_asset_1*weight_asset_2*0.1*0.2*correlation[0,1]
+
+#with numpy :
+import numpy as np
+
+asset1_returns = np.array([0.1, 0.05, 0.03, 0.08, 0.12])  
+asset2_returns = np.array([0.12, 0.08, 0.06, 0.09, 0.11])  
+
+cov_matrix = np.cov(asset1_returns, asset2_returns)
+
+weight_asset1 = 0.6
+weight_asset2 = 0.4
+
+portfolio_variance = (weight_asset1**2 * cov_matrix[0, 0]) + (weight_asset2**2 * cov_matrix[1, 1]) + 2 * weight_asset1 * weight_asset2 * cov_matrix[0, 1]
+
+print("Portfolio Variance:", portfolio_variance)
+
+
+
+import numpy as np 
+import math as mt
+
+assetA_annual_returns = np.array([0.1,0.13])  
+assetB_annual_returns = np.array([0.15,0.12])
+weight_assetA= 0.3
+weight_assetB= 0.7
+portfolio_returns=assetA_annual_returns*weight_assetA+assetB_annual_returns*weight_assetB
+print(f"portofolio returns are : {portfolio_returns*100}%")
+
+assetA_annual_volatility= np.array([0.2,0.1])  
+assetB_annual_volatility= np.array([0.3,0.4])  
+cov_matrix = np.cov(assetA_annual_volatility, assetB_annual_volatility)
+print(cov_matrix)
+
+portfolio_variance = (weight_assetA**2 * cov_matrix[0, 0]) + (weight_assetB**2 * cov_matrix[1, 1]) + 2 * weight_assetA * weight_assetB * cov_matrix[0, 1]
+print("Portfolio Variance:", portfolio_variance)
+
+portfolio_volatility=mt.sqrt(portfolio_variance)
+print(f"portfolio volatility is : {portfolio_volatility}")
+
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+stock_prices = [100, 102, 104, 103, 105, 107, 108]
+dates = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+plt.figure(figsize=(10, 6))
+sns.lineplot(dates, stock_prices)
+plt.title("Stock Price Over a Week")
+plt.xlabel("Days")
+plt.ylabel("Stock Price")
+plt.grid(True)
+plt.show()
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+stock_prices = [100, 102, 104, 103, 105, 107, 108]
+dates = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+plt.figure(figsize=(10, 6))
+sns.lineplot(x=dates, y=stock_prices) 
+plt.title("Stock Price Over a Week")
+plt.xlabel("Days")
+plt.ylabel("Stock Price")
+plt.grid(True)
+plt.show()
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+returns = [0.05, -0.02, 0.03, -0.01, 0.02, 0.03, -0.03, 0.01, 0.04, -0.01]
+sns.histplot(returns, bins=5, kde=True)
+plt.title("Distribution of Stock Returns")
+plt.show()
+
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+stock_prices_TSLA = [100, 102, 139, 113, 115, 112, 108]
+stock_prices_GOOGL = [120, 129, 116, 130, 105, 107, 108]
+dates = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+plt.plot(dates, stock_prices_TSLA, label="stock_prices_TSLA", color="pink")
+plt.plot(dates, stock_prices_GOOGL, label="stock_prices_GOOGL", color="green")
+plt.figure(figsize=(10, 6)) 
+plt.title("Stock Prices of TSLA and GOOGL Over a Week")
+plt.xlabel("Days")
+plt.ylabel("Stock Price")
+plt.grid(True)
+plt.show()
+
+
+returns = [0.05, -0.02, 0.03, -0.01, 0.02, 0.03, -0.03, 0.01, 0.04, -0.01]
+sns.histplot(returns, bins=5, kde=True)
+plt.title("Distribution of Stock Returns")
+plt.show()
+
+
+class CurrencyConverter:
+    def __init__(self):
+      
+        self.rates = {}
+
+    def add_conversion_rate(self, source_currency, target_currency, rate):
+        
+        self.rates[(source_currency, target_currency)] = rate
+
+    def convert(self, amount, source_currency, target_currency):
+       
+        if (source_currency, target_currency) in self.rates:
+            return amount * self.rates[(source_currency, target_currency)]
+        else:
+            return f"Conversion rate not available for {source_currency} to {target_currency}"
+
+
+converter = CurrencyConverter()
+
+
+converter.add_conversion_rate("USD", "EUR", 0.85)
+converter.add_conversion_rate("EUR", "GBP", 0.90)
+converter.add_conversion_rate("USD", "GBP", 0.75)
+
+amount_in_usd = 100
+source_currency = "USD"
+target_currency = "EUR"
+
+converted_amount = converter.convert(amount_in_usd, source_currency, target_currency)
+print(f"{amount_in_usd} {source_currency} is equivalent to {converted_amount} {target_currency}")
+
+
+    class Instrument:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+class Portfolio:
+    def __init__(self):
+        self.instruments = []  
+
+    def add_instrument(self, instrument):
+        self.instruments.append(instrument)
+
+    def total_value(self):
+        total = 0
+        for instrument in self.instruments:
+            total += instrument.price
+        return total
+
+
+stock1 = Instrument("Stock A", 100)
+stock2 = Instrument("Stock B", 150)
+bond1 = Instrument("Bond X", 500)
+
+
+my_portfolio = Portfolio()
+
+
+my_portfolio.add_instrument(stock1)
+my_portfolio.add_instrument(stock2)
+my_portfolio.add_instrument(bond1)
+
+
+total_portfolio_value = my_portfolio.total_value()
+print(f"Total Portfolio Value: ${total_portfolio_value:.2f}")

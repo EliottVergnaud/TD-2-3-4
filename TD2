@@ -1,0 +1,233 @@
+ticker = "AAPL"
+opening_price = 142.7
+closing_price = 143.2
+volume = 1200000
+print(ticker, opening_price, closing_price, volume)
+
+Currency_pair = "EUR/USD"
+Buying_rate = 1.1825
+Selling_rate = 1.1830
+print(Currency_pair, Buying_rate, Selling_rate)
+
+
+Stock_List = ["AAPL", "MSFT", "GOOGL"]
+Stock_List.append("IBM")
+print(Stock_List)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.append("NVDA"+"AMD")
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.append("NVDA")
+Stocks.append("AMD")
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA", "AMD"])
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA" "AMD"])
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA" + "AMD"])
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.append(["NVDA", "AMD"])
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA", "AMD"])
+Stocks[0] = "GOOGL" 
+print (Stocks)
+
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA", "AMD"])
+del Stocks[1]
+print (Stocks)
+
+
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.extend(["NVDA", "AMD"])
+Stocks.remove("AMZN")
+print (Stocks)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks2 = ["NVDA","AMD"]
+print(Stocks+Stocks2)
+
+Stocks = ["TSLA", "AMZN", "FB"]
+Stocks.insert(1,"NVDA")
+print(Stocks)
+
+Stock_details = { "ticker" : "TSLA", "opening_price" : 260.00, "closing_price" : 261.16, "volume" : 116202604}
+print("ticker :", Stock_details["ticker"])
+
+Stock_details = { "ticker" : "TSLA", "opening_price" : 260.00, "closing_price" : 261.16, "volume" : 116202604}
+print(Stock_details["ticker","opening_price"])
+
+Stock_details = { "ticker" : "TSLA", "opening_price" : 260.00, "closing_price" : 261.16, "volume" : 116202604}
+ticker = Stock_details["ticker"]
+opening_price = Stock_details["opening_price"]
+print(ticker, opening_price)
+
+
+principal = 1000
+rate = 5/100 
+years = 0
+while principal < 2000:
+    principal = principal * (1 + rate)
+    years = years + 1
+print(years)
+
+
+
+
+principal = 1000
+rate = 0.05  
+years = 0
+while principal < 2000:
+    principal *= (1 + rate)
+    years += 1
+print("number of years it takes to double principal :",years)
+
+
+stock_prices = [100, 101, 102, 98, 97]
+for i in range(1, len(stock_prices)):
+         daily_return = (stock_prices[i] - stock_prices[i-1]) / stock_prices[i-1]
+print(daily_return)
+ 
+
+stock_prices = [100, 101, 102, 98, 97]
+daily_returns = []
+
+for i in range(1, len(stock_prices)):
+    daily_return = (stock_prices[i] - stock_prices[i-1]) / stock_prices[i-1]
+    daily_returns.append(daily_return)
+print(daily_returns)
+Average_return = sum(daily_returns) / len(daily_returns)
+print("Average_return =",Average_return)
+
+
+
+year = 0
+principal = 500 
+rate = 0.07
+while principal < 1000 :
+    principal *= (1 + rate)
+    year += 1
+print(year)
+print(principal)
+     
+
+bond_yield = 3.8
+if bond_yield >= 4.0:
+    print("Buy the bond.")
+else:
+    print("Do not buy the bond.")
+
+PE_ratio = 17
+if PE_ratio > 25 :
+    print("sell the stock")
+elif PE_ratio < 15 :
+    print("buy the stock")
+else : print("hold the stock")
+
+PE_ratio = 17
+if 23 <= PE_ratio <= 27 :
+    print("sell the stock")
+elif 14  <= PE_ratio <= 16 :
+    print("buy the stock")
+else : print("no startegy")
+
+
+
+
+class Bond:
+    def __init__(self, par_value, coupon_rate, maturity):
+        self.par_value = par_value
+        self.coupon_rate = coupon_rate
+        self.maturity = maturity
+    def current_yield (self, market_price):
+        return (self.coupon_rate * self.par_value) / market_price
+    
+ten_year_note = Bond(1000, 0.025, 10)
+yield_on_note = ten_year_note.current_yield(950)
+print(yield_on_note)
+
+class Portfolio :
+    def __init__(self, instruments):
+        self.instruments = []
+    def add_instrument (self, new_instrument):
+         self.instruments.append(new_instrument)
+
+Portfolio_1 = Portfolio("TSLA")
+Portfolio_1 = add_instrument("APPL")
+print (Portfolio_1)
+        
+
+class Portfolio:
+    def __init__(self):
+        self.instruments = []
+    def add_instrument(self, new_instrument):
+        self.instruments.append(new_instrument)
+    def 
+
+
+my_portfolio = Portfolio()
+my_portfolio.add_instrument("APPL_stock")
+print(my_portfolio.instruments)
+
+
+class CurrencyConverter:
+    def __init__(self):
+        self.rates = {}
+
+    def add_rate(self, source_currency, target_currency, rate):
+        self.rates[(source_currency, target_currency)] = rate
+
+    def convert(self, amount, source_currency, target_currency):
+        if (source_currency, target_currency) in self.rates:
+            return amount * self.rates[(source_currency, target_currency)]
+        else:
+            inverse_rate = 1 / self.rates.get((target_currency, source_currency))
+            return amount * inverse_rate
+
+converter = CurrencyConverter()
+
+converter.add_rate("USD", "EUR", 0.85)
+converter.add_rate("USD", "JPY", 110.22)
+converter.add_rate("EUR", "JPY", 129.67)
+
+amount_usd = 100
+converted_amount_eur = converter.convert(amount_usd, "USD", "EUR")
+print(converted_amount_eur)
+
+class stock :
+    
+    def __init__(self, stock_name, current_price, dividend):
+        self.stock_name=stock_name
+        self.current_price = current_price
+        self.dividend = dividend
+    
+    def yield_dividend (self):
+        return  self.dividend/self.current_price
+Stock_1 = stock("APPL", 177.49, 5)
+print(Stock_1.yield_dividend)
+
+    
+
+    
+
+
+
+
+
+
+
+
